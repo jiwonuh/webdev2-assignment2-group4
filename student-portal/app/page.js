@@ -19,8 +19,8 @@ export default function HomePage() {
 
   return (
     <div>
-      <StudentList students={students} />
       <AddStudentForm onAdd={handleAddStudent} />
+      <StudentList students={students} />
     </div>
   );
 }

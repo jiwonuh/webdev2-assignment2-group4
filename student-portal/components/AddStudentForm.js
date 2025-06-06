@@ -26,8 +26,8 @@ export default function AddStudentForm({ onAdd }) {
   };
 
   return (
-    <div>
-      <h2>Add New Student</h2>
+    <div className='items-center justify-center ml-20 mr-20 mt-10 mb-10'>
+      <h2>Add New Student: </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

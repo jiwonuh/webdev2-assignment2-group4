@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const basePath = '/webdev2-assignment2-group4'; 
 
 export default function Navbar() {
   return (

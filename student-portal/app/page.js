@@ -1,18 +1,27 @@
 'use client';
+import './globals.css';
+import { useEffect, useState } from 'react';
+import StudentList from '../components/StudentList';
+import AddStudentForm from '../components/AddStudentForm';
 
 export default function HomePage() {
+  const [students, setStudents] = useState([]);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+  useEffect(() => {
+    fetch(`${basePath}/data/students.json`)
+      .then((res) => res.json())
+      .then((data) => setStudents(data));
+  }, []);
+
+  const handleAddStudent = (student) => {
+    setStudents((prev) => [...prev, { ...student, id: Date.now() }]);
+  };
+
   return (
-    <div className="min-h-screen ">
-      <main className="max-w-3xl mx-auto mt-24 px-6">
-        <div className="bg-white p-10 rounded-lg text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            Welcome to the Student Portal
-          </h1>
-          <p className="text-lg ">
-            This is the homepage for New Generation High School.
-          </p>
-        </div>
-      </main>
+    <div>
+      <AddStudentForm onAdd={handleAddStudent} />
+      <StudentList students={students} />
     </div>
   );
 }

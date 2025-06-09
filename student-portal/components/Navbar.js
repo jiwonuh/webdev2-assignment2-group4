@@ -1,18 +1,17 @@
-import React from "react";
+'use client';
+import Link from 'next/link';
 
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <nav className="bg-blue-900 text-white py-4 h-20">
-      <div className="container mx-auto flex justify-between items-center mt-2">
-        <div className="text-lg font-bold">New Generation High Shool - Student Portal System</div>
-        <ul className="flex space-x-10">
-          <li><a href="/home" className="hover:underline">Home</a></li>
-          <li><a href="/courses" className="hover:underline">Courses</a></li>
-          <li><a href="/profile" className="hover:underline">Profile</a></li>
+    <nav className="bg-blue-700 text-white px-6 py-4 shadow-md">
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-bold">New Generation High School</h1>
+        <ul className="flex space-x-6">
+          <li><Link href="/" className="hover:underline">Home</Link></li>
+          <li><Link href="/Student_List" className="hover:underline">Student List</Link></li>
+          <li><Link href="/Add_Student" className="hover:underline">Add Student</Link></li>
         </ul>
       </div>
     </nav>
   );
 }
-
-export default Navbar;

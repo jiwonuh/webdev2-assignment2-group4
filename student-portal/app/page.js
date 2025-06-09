@@ -6,9 +6,10 @@ import AddStudentForm from '../components/AddStudentForm';
 
 export default function HomePage() {
   const [students, setStudents] = useState([]);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   useEffect(() => {
-    fetch('/data/students.json')
+    fetch(`${basePath}/data/students.json`)
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);

@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/webdev2-assignment2-group4',
+  },
 };
 
 export default nextConfig;

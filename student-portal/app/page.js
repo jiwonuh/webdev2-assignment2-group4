@@ -1,18 +1,19 @@
 'use client';
 
-export default function HomePage() {
+import React, { useState } from 'react';
+import initialStudents from './data/students.json';
+import StudentForm from './components/StudentForm';
+import StudentList from './components/StudentList';
+
+export default function Page() {
+  const [students, setStudents] = useState(initialStudents);
+
   return (
-    <div className="min-h-screen ">
-      <main className="max-w-3xl mx-auto mt-24 px-6">
-        <div className="bg-white p-10 rounded-lg text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            Welcome to the Student Portal
-          </h1>
-          <p className="text-lg ">
-            This is the homepage for New Generation High School.
-          </p>
-        </div>
-      </main>
+    <div>
+      <h1>Student List</h1>
+      <StudentForm students={students} setStudents={setStudents} />
+      <StudentList students={students} />
     </div>
   );
 }
+

@@ -1,19 +1,18 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import './globals.css';
-
-const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
+import "./globals.css";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 export const metadata = {
-  title: 'Student Portal',
+  title: "Student Portal",
+  description: "A simple student portal application",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar /> 
-        <main style={{ padding: '2rem' }}>{children}</main>
+        <Navbar />
+          {children}
         <Footer />
       </body>
     </html>

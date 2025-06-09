@@ -1,16 +1,34 @@
-export default function StudentList({ students }) {
+'use client';
+import { useEffect, useState } from 'react';
+
+export default function StudentListPage() {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('students');
+    if (stored) {
+      setStudents(JSON.parse(stored));
+    } else {
+      fetch('/data/students.json')
+        .then((res) => res.json())
+        .then((data) => {
+          setStudents(data);
+        });
+    }
+  }, []);
+
   return (
-    <div className="items-center justify-center ml-20 mr-20 mt-10 mb-10">
-      <h2 className="">Student List: </h2>
-      <ul className="space-y-5">
-        {students.map((student, index) => (
-          <li key={index}>
-            <div>Name: {student.firstName} {student.lastName}</div>
-            <div>Date of Birth: {student.dob}</div>
-            <div>Grade: {student.grade}</div>
-          </li>
+    <div>
+      <main className="p-6">
+        <h2 className="text-xl font-bold mb-4">Student List</h2>
+        {students.map((student) => (
+          <div key={student.id} className="mb-4 p-4 rounded bg-white">
+            <p><strong>Name:</strong> {student.firstName} {student.lastName}</p>
+            <p><strong>Date of Birth:</strong> {student.dob}</p>
+            <p><strong>Grade:</strong> {student.grade}</p>
+          </div>
         ))}
-      </ul>
+      </main>
     </div>
   );
 }

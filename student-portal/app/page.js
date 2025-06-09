@@ -1,5 +1,5 @@
 'use client';
-
+import './globals.css';
 import { useEffect, useState } from 'react';
 import StudentList from '../components/StudentList';
 import AddStudentForm from '../components/AddStudentForm';
